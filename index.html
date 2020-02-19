@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Album example · Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+    <!-- Jquery -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      function selectRestaurant(e){
+        const element = document.querySelector("#"+e.id);
+        if (element.style.border=="none")
+          $(e).css("border", "solid green 3px");
+        else
+          $(e).css("border", "none");
+      }
+
+      function crossRestaurant(e){
+        const element = document.querySelector("#"+e.id);
+        if (element.style.opacity<1)
+          $(e).css("opacity", "1");
+        else
+          $(e).css("opacity", "0.5");
+      }
+      
+      function acceptProposal(){
+        alert('Thanks! Enjoy your meal!')
+        $("#prediction").hide();
+      }
+      
+      $(document).ready(function(){
+        $("#prediction").hide();
+        $("#showPrediction").click(function(){
+          $("#prediction").show();
+        });
+      } );        
+       
+    </script>
+</head>
+<body>
+  <main role="main">
+    <section class="text-center" style="margin: 20px">
+      <div class="container">
+        <h2>Restaurant For You</h2>
+        <p class="lead text-muted">Choose restaurants you will likely to go from following list:</p>
+      </div>
+    </section>
+    <div class="album py-5 bg-light">
+      <div class="container">
+      <script>
+        for (let i = 0; i < 2; i++) {
+          document.write("<div class='row'>");
+          for (let j = 0; j < 4; j++) {
+            document.write("<div class='col-3'>");
+              document.write("<div id ='option"+i+j+"' onClick='selectRestaurant(this)' class='card mb-3' style='border: none; max-width: 540px;'>");
+                document.write("<div class='row no-gutters'>");
+                  document.write("<div class='col-md-8'>");
+                    document.write("<img src='...' class='card-img'>");
+                    document.write("</div>");
+                    document.write("<div class='col-md-4'>");
+                      document.write("<div class='card-body'>");
+                        document.write("<p class='card-text'>Price: $$</p>");
+                        document.write("</div>");
+                        document.write("</div>");
+                        document.write("</div>");
+                        document.write("</div>");
+                        document.write("<p align='center'>Restaurant A</p>");          
+                        document.write("</div>");            
+          }
+          document.write("</div>");  
+        }
+        </script>
+        </div>
+        <p align="center" margin="20px">
+          <a href="#prediction" id="showPrediction" class="btn btn-lg btn-primary my-2">Submit</a>
+        </p> 
+      </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+<section id="prediction" class="jumbotron text-center">
+  <div class="container">
+    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+    <h2>Heading</h2>
+    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+
+
+    <p>
+      <a href="#" onClick="acceptProposal()" class="btn btn-primary my-2">I like this!</a>
+      <a href="#prediction" class="btn btn-secondary my-2">Something else?</a>
+    </p>
+  </div>
+
+  <div class="row">
+    &nbsp;
+  </div>
+
+  <script>
+    for (let i = 0; i < 1; i++) {
+      document.write("<div class='row'>");
+      for (let j = 0; j < 4; j++) {
+        document.write("<div class='col-3'>");
+          document.write("<div id ='liked"+j+"' onClick='crossRestaurant(this)' class='card mb-3' style='opacity:1; max-width: 540px;'>");
+            document.write("<div class='row no-gutters'>");
+              document.write("<div class='col-md-8'>");
+                document.write("<img src='...' class='card-img'>");
+                document.write("</div>");
+                document.write("<div class='col-md-4'>");
+                  document.write("<div class='card-body'>");
+                    document.write("<p class='card-text'>Price: $$</p>");
+                    document.write("</div>");
+                    document.write("</div>");
+                    document.write("</div>");
+                    document.write("</div>");
+                    document.write("<p align='center'>Restaurant A</p>");          
+                    document.write("</div>");            
+      }
+      document.write("</div>");  
+    }
+    </script>
+</section>
+
+<footer class="text-muted">
+  <div class="container">
+    <p>Interactive Machine Learning &copy; 2020</p>
+  </div>
+</footer>
+</html>
