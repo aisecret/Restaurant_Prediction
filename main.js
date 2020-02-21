@@ -2,6 +2,7 @@
 // Create a KNN classifier
 const knnClassifier = ml5.KNNClassifier();
 
+/*
 // Create a featureExtractor that can extract features of an image
 const featureExtractor = ml5.featureExtractor("MobileNet", modelReady);
 
@@ -15,6 +16,7 @@ knnClassifier.addExample(features, label);
 knnClassifier.classify(features, function(err, result) {
   console.log(result); // result.label is the predicted label
 });
+*/
 
 class Restaurant {
   constructor(price, distance, spiciness, type, animation, service_speed){
@@ -45,7 +47,7 @@ function create_restaurant_list(){
 
   for(let i = 0; i<200;i++){
     let price = Math.floor(Math.random()*3);
-    let distance =  Math.random()*15;
+    let distance =   Math.floor(Math.random() * (10 * 10 - 1 * 10) + 1 * 10) / (1*10);
     let spiciness =  Math.floor(Math.random()*3);
     let type_list = ["Italian","French","Indonesian","Indian","Chinese","Japanese","British","American"];
     let type = type_list[Math.floor(Math.random() * type_list.length)];
@@ -57,7 +59,7 @@ function create_restaurant_list(){
   return restaurant_list;
 }
 
-let restaurant_list = create_restaurant_list();
+//let restaurant_list = create_restaurant_list();
 
 
 console.log('aaa');
