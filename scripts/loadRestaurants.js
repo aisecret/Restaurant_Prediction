@@ -12,34 +12,42 @@ function loadRestaurants(row, rowItem, name, action, generatingMethod){
         let restaurant = restaurant_list[i*rowItem + j];
 
         let restaurantType = restaurant.type;
+
         let restaurantPrice = restaurant.price;
         if (restaurantPrice == 0) restaurantPrice = "€";
-        else if (restaurantPrice == 1) restaurantPrice = "€€";
-            else restaurantPrice = "€€€";
+        else if (restaurantPrice == 1) restaurantPrice = "€ €";
+            else restaurantPrice = "€ € €";
         let restaurantDistance = restaurant.distance;
         let restaurantSpiciness = restaurant.spiciness;
-        if (restaurantSpiciness == 0) restaurantSpiciness = "none/low";
-        else if (restaurantSpiciness == 1) restaurantSpiciness = "medium";
-            else restaurantSpiciness = "high";
+        if (restaurantSpiciness == 0) restaurantSpiciness = "&#x1F336: none/low";
+        else if (restaurantSpiciness == 1) restaurantSpiciness = "&#x1F336: medium";
+            else restaurantSpiciness = "&#x1F336: high";
         let restaurantLoudness = restaurant.animation;
-        if (restaurantLoudness == 0) restaurantLoudness = "calm";
-        else if (restaurantPrice == 1) restaurantLoudness = "moderate noise";
-            else restaurantLoudness = "rowdy";
+        if (restaurantLoudness == 0) restaurantLoudness = "&#127926: calm";
+        else if (restaurantPrice == 1) restaurantLoudness = "&#127926: moderate";
+            else restaurantLoudness = "&#127926: rowdy";
         let restaurantSpeed = restaurant.service_speed;
-        if (restaurantSpeed == 0) restaurantSpeed = "< 30 mins";
-        else if (restaurantSpeed == 1) restaurantSpeed = "< 1 hour";
-            else restaurantSpeed = "> 1 hour";
+        if (restaurantSpeed == 0) restaurantSpeed = "&#x1F551: < 10m";
+        else if (restaurantSpeed == 1) restaurantSpeed = "&#x1F551: < 30m";
+            else restaurantSpeed = "&#x1F551: > 30m";
 
         document.write("<div class='col-3'>");
         document.write("<div class='card'>");
             document.write("<div class='card-horizontal selection' num='"+ restaurant.num +"' id ='"+name+i+j+"' onClick='"+action+"(this)' class='card mb-3' style='opacity:1; border: none; max-width: 540px;'>");
-            document.write("<div class='img-square-wrapper'>");
+            document.write("<div class='img-square-wrapper restaurant-rectangle-image' >");
                 document.write("<img class='' src='../images/sample.jpg' width='250' height='170'>");
                 document.write("</div>");
-                document.write("<div class='card-body'>");
+                document.write("<div class='card-body' >");
                 //document.write("<h4 class='card-title'>Restaurant A</h4>");
-                document.write("<p class='card-text'>"+restaurantType+" . "+ restaurantPrice +" . "+ restaurantDistance +" kms</p>");
-                document.write("<p class='card-text'>Spiciness: "+restaurantSpiciness+"<br>Crowd: "+restaurantLoudness+"<br>Serving speed: "+restaurantSpeed+"</p>");
+                document.write("<div class='card-text' style='padding-left: 5px'>"+restaurantType +"</div>");
+                document.write("<div class='card-text' style='padding-left: 5px'>Dist: "+restaurantDistance +"km</div>");
+                document.write("<div class='card-text' style='color:green; font-weight: bold; padding-left: 5px'>"+restaurantPrice +"</div>");
+                document.write("<div class='card-text'>"+restaurantLoudness +"</div>");
+                document.write("<div class='card-text'>"+restaurantSpeed +"</div>");
+                document.write("<div class='card-text'>"+restaurantSpiciness +"</div>");
+
+
+                //document.write("<p class='card-text'>Spiciness: "+restaurantSpiciness+"<br>Crowd: "+restaurantLoudness+"<br>Serving speed: "+restaurantSpeed+"</p>");
 
                 document.write("</div>");
                 document.write("</div>");
