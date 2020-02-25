@@ -44,7 +44,7 @@ function loadRestaurants(row, rowItem, name, action, generatingMethod){
 
             document.write("<div class='card-body' >");
             document.write("<div class='card-text' style='padding-left: 5px'>"+restaurantType +"</div>");
-            document.write("<div class='card-text' style='padding-left: 5px'>Dist: "+restaurantDistance +"km</div>");
+            document.write("<div class='card-text' style='padding-left: 5px'>&#128205: "+restaurantDistance +"km</div>");
             document.write("<div class='card-text' style='color:#7CD3A1; font-weight: bold; padding-left: 5px'>"+restaurantPrice +"</div>");
             document.write("<div class='card-text'>"+restaurantLoudness +"</div>");
             document.write("<div class='card-text'>"+restaurantSpeed +"</div>");
