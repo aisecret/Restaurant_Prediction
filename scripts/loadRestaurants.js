@@ -19,7 +19,7 @@ function loadRestaurants(row, rowItem, name, action, generatingMethod){
             else restaurantPrice = "€ € €";
         let restaurantDistance = restaurant.distance;
         let restaurantSpiciness = restaurant.spiciness;
-        if (restaurantSpiciness == 0) restaurantSpiciness = "&#x1F336: none/low";
+        if (restaurantSpiciness == 0) restaurantSpiciness = "&#x1F336: low";
         else if (restaurantSpiciness == 1) restaurantSpiciness = "&#x1F336: medium";
             else restaurantSpiciness = "&#x1F336: high";
         let restaurantLoudness = restaurant.animation;
@@ -34,22 +34,26 @@ function loadRestaurants(row, rowItem, name, action, generatingMethod){
         document.write("<div class='col-3'>");
         document.write("<div class='card'>");
             document.write("<div class='card-horizontal selection' num='"+ restaurant.num +"' id ='"+name+i+j+"' onClick='"+action+"(this)' class='card mb-3' style='opacity:1; border: none; max-width: 540px;'>");
+
+
+
             document.write("<div class='img-square-wrapper restaurant-rectangle-image' >");
-                document.write("<img class='' src='../images/restaurant_image (" + restaurant.num + ").jpg' width='250' height='170'>");
-                document.write("</div>");
-                document.write("<div class='card-body' >");
-                //document.write("<h4 class='card-title'>Restaurant A</h4>");
-                document.write("<div class='card-text' style='padding-left: 5px'>"+restaurantType +"</div>");
-                document.write("<div class='card-text' style='padding-left: 5px'>Dist: "+restaurantDistance +"km</div>");
-                document.write("<div class='card-text' style='color:green; font-weight: bold; padding-left: 5px'>"+restaurantPrice +"</div>");
-                document.write("<div class='card-text'>"+restaurantLoudness +"</div>");
-                document.write("<div class='card-text'>"+restaurantSpeed +"</div>");
-                document.write("<div class='card-text'>"+restaurantSpiciness +"</div>");
+            document.write("<img class='restaurant-image restImg' src='../images/restaurant_image (" + restaurant.num + ").jpg' width='250' height='170'>");
+            document.write("<img class='restaurant-image filter' src='../images/white.jpg' width='250' height='170'>");
+            document.write("</div>");
+
+            document.write("<div class='card-body' >");
+            document.write("<div class='card-text' style='padding-left: 5px'>"+restaurantType +"</div>");
+            document.write("<div class='card-text' style='padding-left: 5px'>Dist: "+restaurantDistance +"km</div>");
+            document.write("<div class='card-text' style='color:#7CD3A1; font-weight: bold; padding-left: 5px'>"+restaurantPrice +"</div>");
+            document.write("<div class='card-text'>"+restaurantLoudness +"</div>");
+            document.write("<div class='card-text'>"+restaurantSpeed +"</div>");
+            document.write("<div class='card-text'>"+restaurantSpiciness +"</div>");
+            document.write("</div>");
 
 
                 //document.write("<p class='card-text'>Spiciness: "+restaurantSpiciness+"<br>Crowd: "+restaurantLoudness+"<br>Serving speed: "+restaurantSpeed+"</p>");
 
-                document.write("</div>");
                 document.write("</div>");
                     document.write("</div>");
                     document.write("</div>");
