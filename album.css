@@ -64,6 +64,7 @@
   }
 
   .restaurant-image{
+    width: 100%;
       padding: 10px;
       height:100%;
       border-radius: 15px;
@@ -73,6 +74,9 @@
     width: 50%;
     opacity: 0.5;
     border:none;
+    position:absolute;
+    top:0px;
+    left:0px;
   }
 
   .restImg{
