@@ -35,7 +35,7 @@ function loadRestaurants(row, rowItem, name, action, generatingMethod){
         document.write("<div class='card'>");
             document.write("<div class='card-horizontal selection' num='"+ restaurant.num +"' id ='"+name+i+j+"' onClick='"+action+"(this)' class='card mb-3' style='opacity:1; border: none; max-width: 540px;'>");
             document.write("<div class='img-square-wrapper restaurant-rectangle-image' >");
-                document.write("<img class='' src='../images/sample.jpg' width='250' height='170'>");
+                document.write("<img class='' src='../images/restaurant_image (" + restaurant.num + ").jpg' width='250' height='170'>");
                 document.write("</div>");
                 document.write("<div class='card-body' >");
                 //document.write("<h4 class='card-title'>Restaurant A</h4>");
