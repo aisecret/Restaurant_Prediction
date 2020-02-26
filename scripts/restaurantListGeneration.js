@@ -15,7 +15,7 @@ class Restaurant {
 }
 
 function getFeaturesNormalized(restaurant){
-  return [restaurant.price/3, restaurant.distance/15, restaurant.distance/3, restaurant.spiciness/3, /*restaurant.type */ restaurant.animation/3,restaurant.service_speed/3];
+  return [restaurant.price/3, restaurant.distance/15, restaurant.animation/3, restaurant.spiciness/3, /*restaurant.type */restaurant.service_speed/3];
 }
 
 function getLabel(restaurant){
@@ -54,7 +54,8 @@ function create_restaurant_list(){
 
 function getRestaurants(){
   //if no database are stored on the local storage generate one and store it
-  //localStorage.clear();
+  //
+  localStorage.clear();
   if(!localStorage.restaurantData){
     let restList = create_restaurant_list();
     let restListJSON = JSON.stringify(restList);

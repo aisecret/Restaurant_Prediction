@@ -1,11 +1,10 @@
 
 function euclideanDistance(instance1, instance2){
     let distance = 0
-    //console.log(distance,instance1.getFeaturesNormalized())
-    for(let x =0; x<getFeaturesNormalized(instance1).length -1;x++){
+    for(let x =0; x<getFeaturesNormalized(instance1).length ;x++){
+
         distance += Math.pow((getFeaturesNormalized(instance1)[x] - getFeaturesNormalized(instance2)[x]), 2);
     }
-
     return Math.sqrt(distance)/getFeaturesNormalized(instance1).length;
 }
 

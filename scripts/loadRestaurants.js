@@ -167,7 +167,7 @@ function shuffle(array) {
 }
 
 $(document).ready(function(){
-    $("#showproposition").click(function(){
+    $("#showfeatuesselection").click(function(){
       $(".selection").each(function() {
         if($(this).css("background-color") !=  'rgba(0, 0, 0, 0)'){
           increaseAttractivity($(this).attr("num"),"like");
