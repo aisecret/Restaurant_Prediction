@@ -107,8 +107,20 @@ function cross(e){
 function acceptProposal(){
     let num = ($(".proposed-rest").attr("num")) ;
     increaseAttractivity(num);
-    alert('Cool! Enjoy your meal!')
-    window.location.href = 'main.html';
+    $( "#accept" ).dialog({
+      width: 300,
+      resizable: false,
+      draggable: false,
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+          window.location.href = 'main.html';
+        }
+      }
+    });
+    $( "#accept" ).dialog( "open" );
+
 }
 
 function reffuseProposal(){

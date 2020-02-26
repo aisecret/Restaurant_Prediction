@@ -13,7 +13,7 @@
     <!-- Custom styles for this template -->
     <link href="../album.css" rel="stylesheet">
     <!-- Jquery -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="../jquery-ui.css">
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -24,7 +24,7 @@
   </head>
 
   <body>
-  <section id="training" class="text-center" style="margin:30px;">
+  <section id="training" class="text-left" style="margin:30px;">
     <div class="container">
       <div class="jumbotron row">
         <div class="col-3" style="background-color:rgba(51, 170, 51, .1); padding: 20px">
@@ -54,7 +54,7 @@
             document.write("<div>"+ restaurantInfo[6] +"</div>");
           </script>
         </div>
-        <div class="col-7">
+        <div class="col-7 text-center">
           <br><br>
           <H2>Maybe you will like this restaurant! </H2>
           <p>The restaurant is proposed to you because you liked restaurants below</p>
@@ -71,6 +71,19 @@
       loadRestaurants(1, 4, "liked", "cross", "similars");
     </script>
   </section>
+
+  <script>
+    $( function() {
+      $( "#accept" ).dialog({
+        autoOpen: false
+      });
+    });
+  </script>
+
+  <div id="accept" title="Accept Proposal">
+    <p>Enjoy your meal! :)</p>
+  </div>
+
   </body>
 
   <footer class="text-muted">
