@@ -19,8 +19,12 @@ function loadRestaurant(restaurant){
   if (restaurantSpeed == 0) restaurantSpeed = "&#x1F551: < 10m";
   else if (restaurantSpeed == 1) restaurantSpeed = "&#x1F551: < 30m";
       else restaurantSpeed = "&#x1F551: > 30m";
+  let restaurantIcon = restaurant.icon;
+  if (restaurantIcon == 'like') restaurantIcon = "&#128077";
+  else if (restaurantIcon == 'eat') restaurantIcon = "&#x1F37D";
+  else restaurantIcon = "";
 
-  return [restaurantNum, restaurantType, restaurantDistance, restaurantPrice, restaurantLoudness, restaurantSpeed, restaurantSpiciness];
+  return [restaurantNum, restaurantType, restaurantDistance, restaurantPrice, restaurantLoudness, restaurantSpeed, restaurantSpiciness, restaurantIcon];
 }
 
 function loadRestaurants(row, rowItem, name, action, generatingMethod){
@@ -47,6 +51,7 @@ function loadRestaurants(row, rowItem, name, action, generatingMethod){
       let restaurantLoudness = restInfos[4];
       let restaurantSpeed = restInfos[5];
       let restaurantSpiciness = restInfos[6];
+      let restaurantIcon = restInfos[7];
 
         document.write("<div class='col-"+ (12/rowItem) +"'>");
         document.write("<div class='card'>");
@@ -65,12 +70,11 @@ function loadRestaurants(row, rowItem, name, action, generatingMethod){
             document.write("<div class='card-text'>"+restaurantSpeed +"</div>");
             document.write("<div class='card-text'>"+restaurantSpiciness +"</div>");
             document.write("</div>");
-
-
                 //document.write("<p class='card-text'>Spiciness: "+restaurantSpiciness+"<br>Crowd: "+restaurantLoudness+"<br>Serving speed: "+restaurantSpeed+"</p>");
 
                 document.write("</div>");
-                    document.write("</div>");
+                document.write("</div>");
+                document.write("<div class='card-text text-right'>"+restaurantIcon+"</div>");
                     document.write("</div>");
     }
     document.write("</div>&nbsp;");
