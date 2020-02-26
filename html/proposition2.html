@@ -24,10 +24,13 @@
   </head>
 
   <body>
-  <section id="training" class="text-center" style="margin:30px;">
+  <section id="training" class="text-center" style="margin:20px;">
     <div class="container">
-      <div class="jumbotron row">
-        <div class="col-3" style="background-color:rgba(51, 170, 51, .1); padding: 20px">
+      <script>
+        loadRestaurants(1, 2, "liked", "cross", "random");
+      </script>
+        <div class="jumbotron row">
+        <div class="col-3" style="background-color:rgba(51, 170, 51, .1); padding: 10px">
           <script>
             let restaurant_list = getRestaurants();
             let id = Math.floor(Math.random() * 219); ;
@@ -52,15 +55,15 @@
           <p class="text-muted"><i>If not, cross out below options and try something else</i></p>
           <p>
             <a href="#" onClick="acceptProposal()" class="btn btn-primary my-2">I like this!</a>
-            <a href="proposition.html" class="btn btn-secondary my-2">Something else?</a>
+            <a href="proposition2.html" class="btn btn-secondary my-2">Something else?</a>
           </p>    
         </div>
       </div>
-    </div>
+      <script>
+        loadRestaurants(1, 2, "liked2", "cross", "random");
+      </script>
+      </div>
     &nbsp;
-    <script>
-      loadRestaurants(1, 4, "liked", "cross", "random");
-    </script>
   </section>
   </body>
 
