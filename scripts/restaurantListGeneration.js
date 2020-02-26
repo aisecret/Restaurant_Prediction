@@ -54,7 +54,7 @@ function create_restaurant_list(){
 
 function getRestaurants(){
   //if no database are stored on the local storage generate one and store it
-  //localStorage.clear();
+  localStorage.clear();
   if(!localStorage.restaurantData){
     let restList = create_restaurant_list();
     let restListJSON = JSON.stringify(restList);
