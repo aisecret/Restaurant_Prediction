@@ -29,21 +29,30 @@
       <div class="jumbotron row">
         <div class="col-3" style="background-color:rgba(51, 170, 51, .1); padding: 20px">
           <script>
-            let restaurant_list = getRestaurants();
-            let id = Math.floor(Math.random() * 219); ;
-    
-            document.write("<img class='rounded-circle z-depth-2' width='250px' height='250px' src='../images/restaurant_image (" + loadRestaurant(restaurant_list, id)[0] + ").jpg' data-holder-rendered='true'>");
+            //let restaurant_list = getRestaurants();
+            //restaurant_list[0].num = 0;
+            //console.log(restaurant_list[0])
+            //console.log(getRestaurants())
+            //console.log(restaurant_list[0])
+
+
+            let id = getKnnResult(getRestaurants())[0].num
+            console.log(id)
+            let restaurantInfo = loadRestaurant(getRestaurants().find(elem => elem.num = id));
+
+            document.write("<img class='rounded-circle z-depth-2' width='250px' height='250px' src='../images/restaurant_image (" + restaurantInfo[0] + ").jpg' data-holder-rendered='true'>");
           </script>
         </div>
-        <div class="col-2" style="background-color:rgba(51, 170, 51, .1); padding: 50px; ">
           <script>
-            document.write("<div>"+ loadRestaurant(restaurant_list, id)[1] +"</div>");
-            document.write("<div>"+ loadRestaurant(restaurant_list, id)[2] +"</div>");
-            document.write("<div>"+ loadRestaurant(restaurant_list, id)[3] +"</div>");
-            document.write("<div>"+ loadRestaurant(restaurant_list, id)[4] +"</div>");
-            document.write("<div>"+ loadRestaurant(restaurant_list, id)[5] +"</div>");
-            document.write("<div>"+ loadRestaurant(restaurant_list, id)[6] +"</div>");            
-          </script>          
+            document.write('<div class="col-2 proposed-rest" num='+ id +' style="background-color:rgba(51, 170, 51, .1); padding: 50px; ">')
+
+            document.write("<div>"+ restaurantInfo[1] +"</div>");
+            document.write("<div >"+ restaurantInfo[2] +"</div>");
+            document.write("<div class='card-text' style='color:#7CD3A1; font-weight: bold'>"+ restaurantInfo[3] +"</div>");
+            document.write("<div>"+ restaurantInfo[4] +"</div>");
+            document.write("<div>"+ restaurantInfo[5] +"</div>");
+            document.write("<div>"+ restaurantInfo[6] +"</div>");
+          </script>
         </div>
         <div class="col-7">
           <br><br>
@@ -52,14 +61,14 @@
           <p class="text-muted"><i>If not, cross out below options and try something else</i></p>
           <p>
             <a href="#" onClick="acceptProposal()" class="btn btn-primary my-2">I like this!</a>
-            <a href="proposition.html" class="btn btn-secondary my-2">Something else?</a>
-          </p>    
+            <a href="proposition.html" onClick="reffuseProposal()" class="btn btn-secondary my-2">Something else?</a>
+          </p>
         </div>
       </div>
     </div>
     &nbsp;
     <script>
-      loadRestaurants(1, 4, "liked", "cross", "random");
+      loadRestaurants(1, 4, "liked", "cross", "similars");
     </script>
   </section>
   </body>

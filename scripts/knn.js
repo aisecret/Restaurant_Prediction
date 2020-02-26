@@ -1,14 +1,12 @@
-export {getKnnResult};
 
 function euclideanDistance(instance1, instance2){
     let distance = 0
     //console.log(distance,instance1.getFeaturesNormalized())
-
-    for(let x =0; x<instance1.getFeaturesNormalized().length -1;x++){
-        distance += Math.pow((instance1.getFeaturesNormalized()[x] - instance2.getFeaturesNormalized()[x]), 2);
-
+    for(let x =0; x<getFeaturesNormalized(instance1).length -1;x++){
+        distance += Math.pow((getFeaturesNormalized(instance1)[x] - getFeaturesNormalized(instance2)[x]), 2);
     }
-    return Math.sqrt(distance)/instance1.getFeaturesNormalized().length;
+
+    return Math.sqrt(distance)/getFeaturesNormalized(instance1).length;
 }
 
 function higherDist(a,b){
@@ -27,7 +25,7 @@ function getKNeighbors(trainingSet, testInstance, k){
 
     let estimation=0;
     for(let i =0; i<k;i++){
-      estimation += (1-distances[i][1])*distances[i][0].getLabel() ;
+      estimation += (1-distances[i][1])*getLabel(distances[i][0]) ;
     }
     return [estimation, distances.slice(0, 20)];
 
@@ -39,6 +37,7 @@ function getKNeighbors(trainingSet, testInstance, k){
   }
 
 function getKnnResult(trainingSet){
+
   let bestRestaurant = null;
   let bestEstimation = 0;
   let bestDistances = null;
@@ -53,6 +52,6 @@ function getKnnResult(trainingSet){
         bestDistances = res[1];
     }
   });
-
-  return [bestRestaurant,bestDistances.sort(higherAttractivity)];
+  let neighboors = bestDistances.sort(higherAttractivity).map(element => element[0]);
+  return [bestRestaurant,neighboors];
 }

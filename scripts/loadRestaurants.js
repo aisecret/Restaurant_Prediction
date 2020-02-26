@@ -1,6 +1,4 @@
-function loadRestaurant(list, id){
-
-  let restaurant = list[id];
+function loadRestaurant(restaurant){
 
   let restaurantNum = restaurant.num;
   let restaurantType = restaurant.type;
@@ -30,20 +28,26 @@ function loadRestaurants(row, rowItem, name, action, generatingMethod){
 
     if(generatingMethod == "random"){
         restaurant_list = shuffle(restaurant_list);
+    }else if(generatingMethod == "similars"){
+
+        restaurant_list = getKnnResult(restaurant_list)[1];
+        //console.log(restaurant_list)
     }
 
     for (let i = 0; i < row; i++) {
     document.write("<div class='row'>");
     for (let j = 0; j < rowItem; j++) {
+      //console.log("in");
+      let restInfos = loadRestaurant(restaurant_list[i*rowItem + j]);
 
-      let restaurantNum = loadRestaurant(restaurant_list, i*rowItem + j)[0];
-      let restaurantType = loadRestaurant(restaurant_list, i*rowItem + j)[1];
-      let restaurantDistance = loadRestaurant(restaurant_list, i*rowItem + j)[2];
-      let restaurantPrice = loadRestaurant(restaurant_list, i*rowItem + j)[3];
-      let restaurantLoudness = loadRestaurant(restaurant_list, i*rowItem + j)[4];              
-      let restaurantSpeed = loadRestaurant(restaurant_list, i*rowItem + j)[5];
-      let restaurantSpiciness = loadRestaurant(restaurant_list, i*rowItem + j)[6];
-      
+      let restaurantNum = restInfos[0];
+      let restaurantType = restInfos[1];
+      let restaurantDistance = restInfos[2];
+      let restaurantPrice = restInfos[3];
+      let restaurantLoudness = restInfos[4];
+      let restaurantSpeed = restInfos[5];
+      let restaurantSpiciness = restInfos[6];
+
         document.write("<div class='col-"+ (12/rowItem) +"'>");
         document.write("<div class='card'>");
         document.write("<div class='card-horizontal selection' num='"+ restaurantNum +"' id ='"+name+i+j+"' onClick='"+action+"(this)' class='card mb-3' style='opacity:1; border: none; max-width: 540px;'>");
@@ -86,11 +90,6 @@ function select(e){
 }
 
 function cross(e){
-    /*const element = document.querySelector("#"+e.id);
-    if (element.style.opacity<1)
-    $(e).css("opacity", "1");
-    else
-    $(e).css("opacity", "0.5");*/
 
     const element = document.querySelector("#"+e.id);
     if (element.style.border=="none" || element.style.border=="medium none"){
@@ -106,8 +105,23 @@ function cross(e){
 }
 
 function acceptProposal(){
+    let num = ($(".proposed-rest").attr("num")) ;
+    increaseAttractivity(num);
     alert('Cool! Enjoy your meal!')
     window.location.href = 'main.html';
+}
+
+function reffuseProposal(){
+  $(".selection").each(function() {
+    if($(this).css("background-color") !=  'rgba(0, 0, 0, 0)'){
+      decreaseAttractivity($(this).attr("num"));
+    }
+
+
+
+  });
+
+
 }
 
 function shuffle(array) {
@@ -130,11 +144,7 @@ function shuffle(array) {
 }
 
 $(document).ready(function(){
-    $("#proposition").hide();
     $("#showproposition").click(function(){
-      $("#proposition").show();
-      $("#selection").hide();
-      //console.log($(".selection"))
       $(".selection").each(function() {
         if($(this).css("background-color") !=  'rgba(0, 0, 0, 0)'){
           increaseAttractivity($(this).attr("num"));

@@ -9,16 +9,17 @@ class Restaurant {
     this.service_speed = service_speed;
     this.attractivity =attractivity;
     this.num = num;
+    let x = Math.random;
+    if(x<0.33)this.icon="like" else if(x<0.66) this.icon = "eat" else this.icon = "none"
   }
+}
 
-  getFeaturesNormalized(){
-    return [this.price/3, this.distance/15, this.distance/3, this.spiciness/3, /*this.type */ this.animation/3,this.service_speed/3];
-  }
+function getFeaturesNormalized(restaurant){
+  return [restaurant.price/3, restaurant.distance/15, restaurant.distance/3, restaurant.spiciness/3, /*restaurant.type */ restaurant.animation/3,restaurant.service_speed/3];
+}
 
-  getLabel(){
-    return this.attractivity;
-  }
-
+function getLabel(restaurant){
+  return restaurant.attractivity;
 }
 
 
@@ -53,7 +54,7 @@ function create_restaurant_list(){
 
 function getRestaurants(){
   //if no database are stored on the local storage generate one and store it
-  localStorage.clear();
+  //localStorage.clear();
   if(!localStorage.restaurantData){
     let restList = create_restaurant_list();
     let restListJSON = JSON.stringify(restList);
@@ -76,10 +77,17 @@ function reduceDatAttractivityDifference(){
 }
 
 function increaseAttractivity(num){
+
   let restaurants = getRestaurants();
-  console.log(restaurants[num].attractivity)
-  restaurants[num].attractivity += (1 - restaurants[num].attractivity)/4*3;
-  console.log(restaurants[num].attractivity)
+  restaurants[num].attractivity = 1;
+  let restListJSON = JSON.stringify(restaurants);
+  localStorage.setItem('restaurantData',restListJSON);
+}
+
+function decreaseAttractivity(num){
+
+  let restaurants = getRestaurants();
+  restaurants[num].attractivity = 0;
   let restListJSON = JSON.stringify(restaurants);
   localStorage.setItem('restaurantData',restListJSON);
 }
