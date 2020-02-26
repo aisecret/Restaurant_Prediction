@@ -30,6 +30,7 @@
           <p class="lead text-muted">Choose restaurants you will likely to go from following list:</p>
         </div>
           <script>
+            localStorage.reffusedList = JSON.stringify([]);
             reduceDatAttractivityDifference();
             loadRestaurants(2, 4, "option", "select","random");
           </script>

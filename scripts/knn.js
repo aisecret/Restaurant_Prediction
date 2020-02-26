@@ -43,7 +43,7 @@ function getKnnResult(trainingSet){
   let bestDistances = null;
 
   let reffusedList = localStorage.reffusedList;
-  reffusedList = JSON.parse(reffusedList);
+  if(reffusedList) reffusedList = JSON.parse(reffusedList);
   trainingSet.forEach( function(element){
 
     if(reffusedList.includes(""+element.num)){

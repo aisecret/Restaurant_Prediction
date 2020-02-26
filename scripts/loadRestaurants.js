@@ -107,6 +107,7 @@ function cross(e){
 function acceptProposal(){
     let num = ($(".proposed-rest").attr("num")) ;
     increaseAttractivity(num,"eat");
+    console.log(localStorage.reffusedList)
     alert('Cool! Enjoy your meal!');
     window.location.href = 'main.html';
 }
@@ -156,6 +157,5 @@ $(document).ready(function(){
           increaseAttractivity($(this).attr("num"),"like");
         }
       });
-      localStorage.reffusedList = JSON.stringify([]);
     });
 } );

@@ -10,7 +10,7 @@ class Restaurant {
     this.attractivity =attractivity;
     this.num = num;
     let x = Math.random;
-    if(x<0.33){this.icon="like" }else if(x<0.66){this.icon = "eat" }else{ this.icon = "none"}
+    this.icon = "none"
   }
 }
 
