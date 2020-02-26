@@ -74,7 +74,7 @@ function loadRestaurants(row, rowItem, name, action, generatingMethod){
 
                 document.write("</div>");
                 document.write("</div>");
-                document.write("<div class='card-text text-right'>"+restaurantIcon+"</div>");
+                document.write("<div class='icon card-text text-right'>"+restaurantIcon+"</div>");
                     document.write("</div>");
     }
     document.write("</div>&nbsp;");

@@ -11,6 +11,8 @@ class Restaurant {
     this.num = num;
     let x = Math.random;
     this.icon = "none"
+    if(attractivity>0.8 && Math.random()>0.5)this.icon = "like"
+    if(attractivity>0.8 && Math.random()<0.5)this.icon = "eat"
   }
 }
 
@@ -54,7 +56,6 @@ function create_restaurant_list(){
 
 function getRestaurants(){
   //if no database are stored on the local storage generate one and store it
-  //
   localStorage.clear();
   if(!localStorage.restaurantData){
     let restList = create_restaurant_list();
