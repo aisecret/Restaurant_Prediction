@@ -116,9 +116,6 @@ function reffuseProposal(){
     if($(this).css("background-color") !=  'rgba(0, 0, 0, 0)'){
       decreaseAttractivity($(this).attr("num"));
     }
-
-
-
   });
 
 
