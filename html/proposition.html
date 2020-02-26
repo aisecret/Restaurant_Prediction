@@ -29,17 +29,9 @@
       <div class="jumbotron row">
         <div class="col-3" style="background-color:rgba(51, 170, 51, .1); padding: 20px">
           <script>
-            //let restaurant_list = getRestaurants();
-            //restaurant_list[0].num = 0;
-            //console.log(restaurant_list[0])
-            //console.log(getRestaurants())
-            //console.log(restaurant_list[0])
-
 
             let id = getKnnResult(getRestaurants())[0].num
-            console.log(id);
-            let restaurantInfo = loadRestaurant(getRestaurants().find(elem => elem.num = id));
-
+            let restaurantInfo = loadRestaurant(getRestaurants().find(elem => elem.num == id));
             document.write("<img class='rounded-circle z-depth-2' width='250px' height='250px' src='../images/restaurant_image (" + restaurantInfo[0] + ").jpg' data-holder-rendered='true'>");
           </script>
         </div>
@@ -61,7 +53,7 @@
           <p class="text-muted"><i>If not, cross out below options and try something else</i></p>
           <p>
             <a href="#" onClick="acceptProposal()" class="btn btn-primary my-2">I like this!</a>
-            <a href="proposition.html" onClick="reffuseProposal()" class="btn btn-secondary my-2">Something else?</a>
+            <a onClick="reffuseProposal()" class="btn btn-secondary my-2">Something else?</a>
           </p>
         </div>
       </div>

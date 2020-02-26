@@ -76,10 +76,10 @@ function reduceDatAttractivityDifference(){
 
 }
 
-function increaseAttractivity(num){
-
+function increaseAttractivity(num, icon){
   let restaurants = getRestaurants();
   restaurants[num].attractivity = 1;
+  restaurants[num].icon = icon;
   let restListJSON = JSON.stringify(restaurants);
   localStorage.setItem('restaurantData',restListJSON);
 }

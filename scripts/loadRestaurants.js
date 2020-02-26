@@ -106,7 +106,7 @@ function cross(e){
 
 function acceptProposal(){
     let num = ($(".proposed-rest").attr("num")) ;
-    increaseAttractivity(num);
+    increaseAttractivity(num, "eat");
     $( "#accept" ).dialog({
       width: 300,
       resizable: false,
@@ -127,9 +127,18 @@ function reffuseProposal(){
   $(".selection").each(function() {
     if($(this).css("background-color") !=  'rgba(0, 0, 0, 0)'){
       decreaseAttractivity($(this).attr("num"));
+
     }
   });
 
+  let reffusedList = localStorage.reffusedList;
+  reffusedList = JSON.parse(reffusedList);
+
+  let num = ($(".proposed-rest").attr("num")) ;
+  reffusedList.push(num);
+  reffusedList = JSON.stringify(reffusedList);
+  localStorage.setItem('reffusedList',reffusedList);
+  window.location.href = 'proposition.html';
 
 }
 
@@ -156,9 +165,9 @@ $(document).ready(function(){
     $("#showproposition").click(function(){
       $(".selection").each(function() {
         if($(this).css("background-color") !=  'rgba(0, 0, 0, 0)'){
-          increaseAttractivity($(this).attr("num"));
+          increaseAttractivity($(this).attr("num"),"like");
         }
       });
-
+      localStorage.reffusedList = JSON.stringify([]);
     });
 } );

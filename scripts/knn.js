@@ -41,12 +41,19 @@ function getKnnResult(trainingSet){
   let bestRestaurant = null;
   let bestEstimation = 0;
   let bestDistances = null;
+
+  let reffusedList = localStorage.reffusedList;
+  reffusedList = JSON.parse(reffusedList);
   trainingSet.forEach( function(element){
+
+    if(reffusedList.includes(""+element.num)){
+      return;
+    }
 
     let res = getKNeighbors(trainingSet,element,14);
     let estim = res[0];
 
-    if(estim>bestEstimation){
+    if(estim>bestEstimation ){
         bestEstimation = estim;
         bestRestaurant = element;
         bestDistances = res[1];
