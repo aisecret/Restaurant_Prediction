@@ -106,13 +106,8 @@ function cross(e){
 
 function acceptProposal(){
     let num = ($(".proposed-rest").attr("num")) ;
-<<<<<<< HEAD
+
     increaseAttractivity(num,"eat");
-    console.log(localStorage.reffusedList)
-    alert('Cool! Enjoy your meal!');
-    window.location.href = 'main.html';
-=======
-    increaseAttractivity(num, "eat");
     $( "#accept" ).dialog({
       width: 300,
       resizable: false,
@@ -126,20 +121,23 @@ function acceptProposal(){
       }
     });
     $( "#accept" ).dialog( "open" );
-
->>>>>>> 8c5dc1dee3329715ba10b924a2587f5ed021588a
 }
 
 function reffuseProposal(){
   $(".selection").each(function() {
     if($(this).css("background-color") !=  'rgba(0, 0, 0, 0)'){
       decreaseAttractivity($(this).attr("num"));
-
+    }else{
+      decreaseAttractivity($(this).attr("num"));
     }
   });
 
   let reffusedList = localStorage.reffusedList;
-  reffusedList = JSON.parse(reffusedList);
+  if(reffusedList){
+    reffusedList = JSON.parse(reffusedList);
+  }else{
+    reffusedList = [];
+  }
 
   let num = ($(".proposed-rest").attr("num")) ;
   reffusedList.push(num);
