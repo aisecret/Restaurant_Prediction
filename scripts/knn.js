@@ -1,11 +1,15 @@
 
 function euclideanDistance(instance1, instance2){
-    let distance = 0
+    let distance = 0;
+    let prioList = [];
+    if(localStorage.priority){
+      let prioList = JSON.parse(localStorage.priority);
+    }
     for(let x =0; x<getFeaturesNormalized(instance1).length ;x++){
-
+        if(prioList.includes(x))distance += Math.pow((getFeaturesNormalized(instance1)[x] - getFeaturesNormalized(instance2)[x]), 2);
         distance += Math.pow((getFeaturesNormalized(instance1)[x] - getFeaturesNormalized(instance2)[x]), 2);
     }
-    return Math.sqrt(distance)/getFeaturesNormalized(instance1).length;
+    return Math.sqrt(distance)/(getFeaturesNormalized(instance1).length + prioList.length);
 }
 
 function higherDist(a,b){
@@ -36,6 +40,7 @@ function getKNeighbors(trainingSet, testInstance, k){
   }
 
 function getKnnResult(trainingSet){
+
 
   let bestRestaurant = null;
   let bestEstimation = 0;
